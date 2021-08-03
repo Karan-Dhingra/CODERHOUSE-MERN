@@ -1,0 +1,21 @@
+POST http://localhost:5500/api/send-otp HTTP/1.1
+Content-Type: application/json
+
+{
+    "phone": "+91 6280077103"
+}
+
+###
+
+# 3 HashTags to seperate 2 Requests
+
+###
+
+POST http://localhost:5500/api/verify-otp HTTP/1.1
+Content-Type: application/json
+
+{
+    "phone": "+91 6280077103",
+    "otp": 3007,
+    "hash": "180b2f5e7877c025f5478aa892d021ffe71de9a3764d14a1854532a8bc1c6e11.1627906959739"
+}
