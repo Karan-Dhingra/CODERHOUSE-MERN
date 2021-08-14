@@ -115,9 +115,7 @@ const ProtectedRoute = ({ children, ...rest }) => {
                 }
               />
           ) : (
-            <Redirect
               children
-            />
           )
         );
       }}

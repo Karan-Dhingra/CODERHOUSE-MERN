@@ -55,7 +55,7 @@ class AuthController {
         const isValid = otpService.verifyOtp(hashedOtp, data)
 
         if (!isValid) {
-            re.status(400).json({ message: 'Invalid OTP' })
+            res.status(400).json({ message: 'Invalid OTP' })
         }
 
         let user;
@@ -77,13 +77,20 @@ class AuthController {
             activated: false
         })
 
+        await tokenService.storeRefreshToken(refreshToken, user._id)
+
+        res.cookie('accessToken', accessToken, {
+            maxAge: 1000 * 60 * 60 * 24 * 30,
+            httpOnly: true,
+        })
+
         res.cookie('refreshToken', refreshToken, {
             maxAge: 1000 * 60 * 60 * 24 * 30,
             httpOnly: true,
         })
 
         const userDto = new UserDto(user)
-        res.json({ accessToken, user: userDto })
+        res.json({ user: userDto, auth: true })
     }
 }
 

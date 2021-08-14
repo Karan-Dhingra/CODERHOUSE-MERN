@@ -39,7 +39,7 @@ const StepOTP = ({onClick}) => {
                         <div className={styles.actionButtonWrap}>
                             <Button className="" onClick = {submit} text="Next" />
                         </div>
-                        <p className={styles.bottomParagraph}>Didn’t receive? Tap to resend</p>
+                        <p className={styles.bottomParagraph}>By entering your number, you're aggerring to our Terms of Service and Privacy Policy. Thanks!</p>
                     </div>
                 </Card>
             </div>
