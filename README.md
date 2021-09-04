@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 # CLUBHOUSE REACT APP
-=======
-# CODERHOUSE
->>>>>>> c685bf1d067a9a6c404273cce63335008458fc58
