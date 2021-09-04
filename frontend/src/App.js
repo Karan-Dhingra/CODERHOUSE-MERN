@@ -8,27 +8,35 @@ import Authenticate from './pages/Authenticate/Authenticate';
 import Navigation from './components/shared/Navigation/Navigation';
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from 'react-redux'
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
+import Loader from './components/shared/Loader/Loader';
 
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Navigation/>
-      <Switch>
-        <GuestRoute path='/' exact>
-          <Home />
-        </GuestRoute>
-        <GuestRoute path='/authenticate'>
-          <Authenticate />
-        </GuestRoute>
-        <SemiProtectedRoute path='/activate'>
-          <Activate />
-        </SemiProtectedRoute>
-        <ProtectedRoute path='/rooms'>
-          <Rooms />
-        </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
+
+  // Call Refresh Endpoint
+  
+  const {loading} = useLoadingWithRefresh();
+  return loading?(
+      <Loader message="Loading Please Wait..." />
+    ):(
+      <BrowserRouter>
+        <Navigation/>
+        <Switch>
+          <GuestRoute path='/' exact>
+            <Home />
+          </GuestRoute>
+          <GuestRoute path='/authenticate'>
+            <Authenticate />
+          </GuestRoute>
+          <SemiProtectedRoute path='/activate'>
+            <Activate />
+          </SemiProtectedRoute>
+          <ProtectedRoute path='/rooms'>
+            <Rooms />
+          </ProtectedRoute>
+        </Switch>
+      </BrowserRouter>
   );
 }
 
