@@ -3,6 +3,7 @@ import Home from './pages/Home/Home'
 // import Register from './pages/Register/Register'
 // import Login from './pages/Login/Login'
 import Rooms from './pages/Rooms/Rooms';
+import Room from "./pages/Room/Room";
 import Activate from './pages/Activate/Activate';
 import Authenticate from './pages/Authenticate/Authenticate';
 import Navigation from './components/shared/Navigation/Navigation';
@@ -34,6 +35,9 @@ function App() {
           </SemiProtectedRoute>
           <ProtectedRoute path='/rooms'>
             <Rooms />
+          </ProtectedRoute>
+          <ProtectedRoute path="/room/:id">
+            <Room />
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>
